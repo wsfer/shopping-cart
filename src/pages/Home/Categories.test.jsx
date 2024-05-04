@@ -9,7 +9,7 @@ const routerWrapper = ({ children }) => (
 
 test('Should display an heading', () => {
   render(<Categories />, { wrapper: routerWrapper });
-  const heading = getByRole('heading');
+  const heading = screen.getByRole('heading');
   expect(heading).toBeInTheDocument();
 });
 
