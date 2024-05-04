@@ -1,0 +1,48 @@
+.hero {
+  background-color: var(--neutral-1000);
+}
+
+.content {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+}
+
+.callToAction {
+  flex: 1 0 50%;
+  margin: auto 0;
+  text-align: center;
+}
+
+.title {
+  font-size: var(--text-5xl);
+  margin-bottom: 0;
+}
+
+.paragraph {
+  color: var(--neutral-300);
+}
+
+.button {
+  background-color: var(--orange-300);
+  color: var(--neutral-900);
+  display: block;
+  margin: 2em auto;
+  outline-offset: 0.1em;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  width: fit-content;
+
+  &:hover {
+    background-color: var(--orange-400);
+  }
+
+  &:focus {
+    outline: 2px solid var(--orange-400);
+  }
+}
+
+.image {
+  flex: 1 0 50%;
+  min-width: min(80vw, 300px);
+}
