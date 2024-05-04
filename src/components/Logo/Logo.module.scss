@@ -1,0 +1,11 @@
+.logo {
+  font-family: 'Leckerli One';
+
+  > .orangeText {
+    color: var(--orange-400);
+  }
+
+  > .whiteText {
+    color: var(--neutral-200);
+  }
+}

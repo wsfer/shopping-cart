@@ -1,5 +1,6 @@
 import { Link, NavLink } from 'react-router-dom';
 import Container from '../Container/Container';
+import Logo from '../Logo/Logo';
 import styles from './Header.module.scss';
 
 function Header() {
@@ -8,8 +9,7 @@ function Header() {
       <Container>
         <div className={styles.content}>
           <Link className={styles.logo} to="/">
-            <span className={styles.orange}>Fashion</span>
-            <span className={styles.white}>Store</span>
+            <Logo />
           </Link>
           <nav>
             <ul className={styles.list}>

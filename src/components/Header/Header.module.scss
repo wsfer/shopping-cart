@@ -9,19 +9,10 @@
 }
 
 .logo {
-  font-family: 'Leckerli One';
   font-size: var(--text-xl);
   margin-right: auto;
   outline-offset: 0.1em;
   text-decoration: none;
-
-  > .orange {
-    color: var(--orange-400);
-  }
-
-  > .white {
-    color: var(--neutral-200);
-  }
 
   &:hover {
     opacity: 0.7;
