@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import Container from '../../components/Container/Container';
 import Logo from '../../components/Logo/Logo';
 import earrings from '../../assets/images/earrings.jpg';
+import buttons from '../../styles/Buttons.module.scss';
 import styles from './Hero.module.scss';
 
 function Hero() {
@@ -18,7 +19,10 @@ function Hero() {
               Distinctio hic a maiores nihil esse omnis accusamus quas ipsa qui
               iste harum voluptate enim sed.
             </p>
-            <Link className={styles.button} to="/products">
+            <Link
+              className={`${buttons.default} ${styles.button}`}
+              to="/products"
+            >
               Check our products
             </Link>
           </div>

@@ -24,22 +24,10 @@
 }
 
 .button {
-  background-color: var(--orange-300);
-  color: var(--neutral-900);
   display: block;
   margin: 2em auto;
-  outline-offset: 0.1em;
   padding: 0.5em 1em;
-  text-decoration: none;
   width: fit-content;
-
-  &:hover {
-    background-color: var(--orange-400);
-  }
-
-  &:focus {
-    outline: 2px solid var(--orange-400);
-  }
 }
 
 .image {

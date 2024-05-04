@@ -1,0 +1,15 @@
+.default {
+  background-color: var(--orange-300);
+  box-shadow: 2px 2px 5px var(--opaque-dark);
+  color: var(--neutral-900);
+  outline-offset: 0.1em;
+  text-decoration: none;
+
+  &:hover {
+    background-color: var(--orange-400);
+  }
+
+  &:focus {
+    outline: 2px solid var(--orange-400);
+  }
+}
