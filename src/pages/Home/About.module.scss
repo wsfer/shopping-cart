@@ -1,0 +1,36 @@
+.about {
+  background-color: var(--neutral-100);
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.callToAction {
+  flex: 1 0 50%;
+  margin: auto 0;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.title {
+  font-size: var(--text-4xl);
+}
+
+.paragraph {
+  color: var(--neutral-700);
+}
+
+.button {
+  display: block;
+  margin: 2em auto 0;
+  padding: 0.5em 1em;
+  width: fit-content;
+}
+
+.image {
+  flex: 1 0 50%;
+  min-width: min(80vw, 300px);
+  transform: translateY(10%);
+}
