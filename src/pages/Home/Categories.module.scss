@@ -1,0 +1,66 @@
+$opaque-background: linear-gradient(var(--opaque-dark), var(--opaque-dark));
+
+.categories {
+  background-color: var(--neutral-1000);
+  padding: 7.5rem 0 3rem;
+}
+
+.content {
+  margin: 0 auto;
+  max-width: 900px;
+}
+
+.title {
+  color: var(--neutral-200);
+  font-size: var(--text-2xl);
+}
+
+.list {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+}
+
+.listItem {
+  width: 100%;
+}
+
+.link {
+  align-items: center;
+  aspect-ratio: 1 / 1;
+  background-position: center;
+  background-size: cover;
+  color: var(--orange-300);
+  display: flex;
+  justify-content: center;
+  outline-offset: 0.1em;
+  text-align: center;
+  text-decoration: none;
+  transition: transform 0.2s ease-out;
+  width: 100%;
+
+  &:hover {
+    color: var(--orange-400);
+    transform: translateY(-3%);
+  }
+
+  &:focus {
+    color: var(--orange-400);
+    outline: 2px solid var(--orange-400);
+  }
+}
+
+.linkOne {
+  background-image: $opaque-background,
+    url('../../assets/images/woman-with-gray-shirt.jpg');
+}
+
+.linkTwo {
+  background-image: $opaque-background,
+    url('../../assets/images/man-with-jacket.jpg');
+}
+.linkThree {
+  background-image: $opaque-background,
+    url('../../assets/images/gold-rings.jpg');
+}
