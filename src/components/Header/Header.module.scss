@@ -1,3 +1,5 @@
+@use '../../styles/components';
+
 .header {
   background-color: var(--neutral-900);
 }
@@ -30,20 +32,6 @@
 }
 
 .link {
+  @include components.link;
   color: var(--neutral-200);
-  font-size: var(--text-normal);
-  outline-offset: 0.1em;
-  text-decoration: none;
-
-  &:global.active {
-    color: var(--orange-300);
-  }
-
-  &:hover {
-    color: var(--orange-400);
-  }
-
-  &:focus {
-    outline: 2px solid var(--orange-400);
-  }
 }

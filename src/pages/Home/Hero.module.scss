@@ -1,3 +1,5 @@
+@use '../../styles/components';
+
 .hero {
   background-color: var(--neutral-1000);
 }
@@ -25,10 +27,8 @@
 }
 
 .button {
-  display: block;
-  font-size: var(--text-normal);
+  @include components.button;
   margin: 2em auto;
-  padding: 0.5em 1em;
   width: fit-content;
 }
 

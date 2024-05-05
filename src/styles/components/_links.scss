@@ -1,0 +1,18 @@
+@mixin link {
+  font-size: var(--text-normal);
+  outline-offset: 0.1em;
+  text-decoration: none;
+
+  &:global.active {
+    color: var(--orange-300);
+  }
+
+  &:hover {
+    color: var(--orange-400);
+  }
+
+  &:focus {
+    color: var(--orange-400);
+    outline: 2px solid var(--orange-400);
+  }
+}

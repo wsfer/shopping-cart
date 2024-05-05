@@ -1,7 +1,10 @@
-.default {
+@mixin button {
   background-color: var(--orange-300);
   color: var(--neutral-900);
+  display: block;
+  font-size: var(--text-normal);
   outline-offset: 0.15em;
+  padding: 0.5em 1em;
   text-decoration: none;
 
   &:hover {

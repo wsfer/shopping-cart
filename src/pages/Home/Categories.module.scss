@@ -1,3 +1,5 @@
+@use '../../styles/components';
+
 $opaque-background: linear-gradient(var(--opaque-dark), var(--opaque-dark));
 
 .categories {
@@ -22,28 +24,21 @@ $opaque-background: linear-gradient(var(--opaque-dark), var(--opaque-dark));
 }
 
 .link {
+  @include components.link;
   align-items: center;
   aspect-ratio: 1 / 1;
   background-position: center;
   background-size: cover;
   color: var(--orange-300);
   display: flex;
-  font-size: var(--text-normal);
   justify-content: center;
-  outline-offset: 0.1em;
   text-align: center;
   text-decoration: none;
   transition: transform 0.2s ease-out;
   width: 100%;
 
   &:hover {
-    color: var(--orange-400);
     transform: translateY(-3%);
-  }
-
-  &:focus {
-    color: var(--orange-400);
-    outline: 2px solid var(--orange-400);
   }
 }
 
