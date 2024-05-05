@@ -21,10 +21,12 @@
 
 .paragraph {
   color: var(--neutral-300);
+  font-size: var(--text-normal);
 }
 
 .button {
   display: block;
+  font-size: var(--text-normal);
   margin: 2em auto;
   padding: 0.5em 1em;
   width: fit-content;

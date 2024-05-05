@@ -5,11 +5,6 @@ $opaque-background: linear-gradient(var(--opaque-dark), var(--opaque-dark));
   padding: 7.5rem 0 3rem;
 }
 
-.content {
-  margin: 0 auto;
-  max-width: 900px;
-}
-
 .title {
   color: var(--neutral-200);
   font-size: var(--text-2xl);
@@ -33,6 +28,7 @@ $opaque-background: linear-gradient(var(--opaque-dark), var(--opaque-dark));
   background-size: cover;
   color: var(--orange-300);
   display: flex;
+  font-size: var(--text-normal);
   justify-content: center;
   outline-offset: 0.1em;
   text-align: center;
