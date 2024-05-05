@@ -1,0 +1,72 @@
+@use '../../styles/components';
+@use '../../styles/layout';
+
+.footer {
+  background-color: var(--neutral-900);
+  color: var(--neutral-200);
+  padding: 2rem 0;
+}
+
+// Layout
+.topRow,
+.navRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+@media (min-width: layout.$screen-sm) {
+  .contentWrapper {
+    display: flex;
+
+    > div {
+      width: 100%;
+    }
+  }
+
+  .topRow > * {
+    min-width: max-content;
+  }
+
+  .firstNav {
+    margin: 0 auto;
+  }
+}
+
+// Navigation styles
+.list {
+  list-style: none;
+  padding: 0;
+
+  > li + li {
+    margin-top: 0.5em;
+  }
+}
+
+// Text styles
+.title {
+  font-weight: normal;
+  margin-top: 0;
+}
+
+.boldText {
+  color: var(--neutral-200);
+  font-size: var(--text-normal);
+}
+
+.paragraph {
+  color: var(--neutral-400);
+  font-size: var(--text-sm);
+}
+
+.linkBold {
+  @include components.link;
+  color: var(--neutral-200);
+  font-size: var(--text-normal);
+}
+
+.linkLight {
+  @include components.link;
+  color: var(--neutral-400);
+  font-size: var(--text-sm);
+}
