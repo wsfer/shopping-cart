@@ -1,8 +1,7 @@
 .default {
   background-color: var(--orange-300);
-  box-shadow: 2px 2px 5px var(--opaque-dark);
   color: var(--neutral-900);
-  outline-offset: 0.1em;
+  outline-offset: 0.15em;
   text-decoration: none;
 
   &:hover {
