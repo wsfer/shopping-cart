@@ -1,0 +1,15 @@
+.title {
+  font-family: 'Leckerli One';
+  font-size: var(--text-3xl);
+  margin: 0;
+}
+
+.banner {
+  align-items: end;
+  background-position: center;
+  background-size: cover;
+  color: var(--neutral-200);
+  display: flex;
+  height: max(10rem, 15vw);
+  justify-content: center;
+}
