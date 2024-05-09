@@ -18,18 +18,18 @@ test('Should have a nav with links to products categories', async () => {
 
   render(<Categories />, { wrapper: routerWrapper });
   const nav = screen.getByRole('navigation');
-  const menClothes = within(nav).getByRole('link', { name: "Men's clothes" });
-  const Jewelry = within(nav).getByRole('link', { name: 'Jewelry' });
+  const menClothes = within(nav).getByRole('link', { name: "Men's clothing" });
+  const Jewelry = within(nav).getByRole('link', { name: 'Jewelery' });
   const womenClothes = within(nav).getByRole('link', {
-    name: "Women's clothes",
+    name: "Women's clothing",
   });
 
   await user.click(menClothes);
-  expect(window.location.pathname).toBe('/products/men-clothes');
+  expect(window.location.pathname).toBe('/products/men-clothing');
 
   await user.click(Jewelry);
-  expect(window.location.pathname).toBe('/products/jewelry');
+  expect(window.location.pathname).toBe('/products/jewelery');
 
   await user.click(womenClothes);
-  expect(window.location.pathname).toBe('/products/women-clothes');
+  expect(window.location.pathname).toBe('/products/women-clothing');
 });

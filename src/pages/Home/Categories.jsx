@@ -12,25 +12,25 @@ function Categories() {
             <li className={styles.listItem}>
               <Link
                 className={`${styles.link} ${styles.linkOne}`}
-                to="/products/women-clothes"
+                to="/products/women-clothing"
               >
-                Women's clothes
+                Women's clothing
               </Link>
             </li>
             <li className={styles.listItem}>
               <Link
                 className={`${styles.link} ${styles.linkTwo}`}
-                to="/products/men-clothes"
+                to="/products/men-clothing"
               >
-                Men's clothes
+                Men's clothing
               </Link>
             </li>
             <li className={styles.listItem}>
               <Link
                 className={`${styles.link} ${styles.linkThree}`}
-                to="/products/jewelry"
+                to="/products/jewelery"
               >
-                Jewelry
+                Jewelery
               </Link>
             </li>
           </ul>

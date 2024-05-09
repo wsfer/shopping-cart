@@ -36,19 +36,22 @@ function Footer() {
                 <li>
                   <Link
                     className={styles.linkLight}
-                    to="/products/women-clothes"
+                    to="/products/women-clothing"
                   >
-                    Women's clothes
+                    Women's clothing
                   </Link>
                 </li>
                 <li>
-                  <Link className={styles.linkLight} to="/products/men-clothes">
-                    Men's clothes
+                  <Link
+                    className={styles.linkLight}
+                    to="/products/men-clothing"
+                  >
+                    Men's clothing
                   </Link>
                 </li>
                 <li>
-                  <Link className={styles.linkLight} to="/products/jewelry">
-                    Jewelry
+                  <Link className={styles.linkLight} to="/products/jewelery">
+                    Jewelery
                   </Link>
                 </li>
               </ul>

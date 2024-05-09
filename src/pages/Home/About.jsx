@@ -16,7 +16,7 @@ function About() {
               provident.
             </p>
             <Link className={styles.button} to="/products">
-              Products
+              Explore Products
             </Link>
           </div>
           <img
