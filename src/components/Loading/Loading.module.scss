@@ -1,0 +1,56 @@
+.content {
+  height: 100%;
+}
+
+.loading {
+  background-color: var(--neutral-800);
+  height: 100%;
+  padding: 2rem;
+}
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 0 auto;
+
+  > .ball {
+    animation-direction: alternate;
+    animation-duration: 0.5s;
+    animation-name: blinkAndScale;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    background-color: var(--orange-300);
+    border-radius: 50%;
+    height: var(--text-sm);
+    width: var(--text-sm);
+
+    &.ballOne {
+      animation-delay: 0s;
+    }
+
+    &.ballTwo {
+      animation-delay: 0.25s;
+    }
+
+    &.ballThree {
+      animation-delay: 0.5s;
+    }
+  }
+}
+
+.paragraph {
+  color: var(--neutral-200);
+  margin: 1em 0 0;
+  text-align: center;
+}
+
+@keyframes blinkAndScale {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.2);
+  }
+}
