@@ -1,5 +1,11 @@
 import { useState, useEffect } from 'react';
 
+const updateStorage = (cart) => {
+  localStorage.setItem('cart', JSON.stringify(cart));
+  const event = new CustomEvent('storage', { detail: { key: 'cart' } });
+  window.dispatchEvent(event);
+};
+
 function useCart() {
   const [cart, setCart] = useState([]);
 
@@ -14,7 +20,7 @@ function useCart() {
     }
 
     setCart(newCart);
-    localStorage.setItem('cart', JSON.stringify(newCart));
+    updateStorage(newCart);
   };
 
   const updateQuantity = (id, quantity) => {
@@ -34,7 +40,7 @@ function useCart() {
 
     if (isFound) {
       setCart(newCart);
-      localStorage.setItem('cart', JSON.stringify(newCart));
+      updateStorage(newCart);
     } else {
       throw new Error('Product not found');
     }
@@ -48,7 +54,17 @@ function useCart() {
     }
 
     setCart(newCart);
-    localStorage.setItem('cart', JSON.stringify(newCart));
+    updateStorage(newCart);
+  };
+
+  // Handle changes from localStorage caused by another useCart hook
+  const handleStorageChanges = (event) => {
+    const key = event.detail?.key ?? event.key;
+
+    if (key === 'cart') {
+      const newCart = JSON.parse(localStorage.getItem('cart'));
+      setCart(newCart);
+    }
   };
 
   // Get saved cart from local storage
@@ -62,14 +78,23 @@ function useCart() {
         );
 
         setCart(validProducts);
-        localStorage.setItem('cart', JSON.stringify(validProducts));
+        updateStorage(validProducts);
       } else {
-        localStorage.setItem('cart', '[]');
+        updateStorage([]);
       }
     } catch (error) {
       console.error(error);
-      localStorage.setItem('cart', '[]');
+      updateStorage([]);
     }
+  }, []);
+
+  //
+  useEffect(() => {
+    window.addEventListener('storage', handleStorageChanges);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChanges);
+    };
   }, []);
 
   return { cart, addProduct, updateQuantity, removeProduct };
