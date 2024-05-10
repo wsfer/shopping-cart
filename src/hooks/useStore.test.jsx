@@ -174,6 +174,7 @@ describe('Filter products by category', () => {
   });
 
   test('Should throw an exception for unsupported category', () => {
+    vi.spyOn(console, 'error').mockImplementationOnce(() => {});
     fetch.mockResolvedValue(createFetchResponse([]));
 
     expect(() => {
