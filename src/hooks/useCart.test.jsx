@@ -305,3 +305,45 @@ describe('On removeProduct method', () => {
     });
   });
 });
+
+describe('Should mirror the actions from another similar hook', () => {
+  test('When a new product is added', () => {
+    const { result } = setup(fakeCart);
+    const anotherHook = renderHook(useCart);
+
+    act(() => {
+      anotherHook.result.current.addProduct({ id: 56, quantity: 3 });
+    });
+
+    expect(result.current.cart).toEqual([...fakeCart, { id: 56, quantity: 3 }]);
+  });
+
+  test('When a product is updated', () => {
+    const { result } = setup(fakeCart);
+    const anotherHook = renderHook(useCart);
+
+    act(() => {
+      anotherHook.result.current.updateQuantity(8, 777);
+    });
+
+    expect(result.current.cart).toEqual([
+      { id: 3, quantity: 1 },
+      { id: 78, quantity: 3 },
+      { id: 8, quantity: 777 },
+    ]);
+  });
+
+  test('When a product is removed', () => {
+    const { result } = setup(fakeCart);
+    const anotherHook = renderHook(useCart);
+
+    act(() => {
+      anotherHook.result.current.removeProduct(78);
+    });
+
+    expect(result.current.cart).toEqual([
+      { id: 3, quantity: 1 },
+      { id: 8, quantity: 20 },
+    ]);
+  });
+});
