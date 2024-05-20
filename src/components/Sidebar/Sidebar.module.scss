@@ -1,0 +1,29 @@
+@use '../../styles/components';
+
+.sidebar {
+  background-color: var(--neutral-800);
+}
+
+.title {
+  color: var(--neutral-200);
+  font-size: var(--text-lg);
+  font-weight: normal;
+  margin: 0;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.listItem {
+  margin-top: 0.5em;
+}
+
+.link {
+  @include components.link;
+  color: var(--neutral-300);
+  display: block;
+  min-width: max-content;
+}
