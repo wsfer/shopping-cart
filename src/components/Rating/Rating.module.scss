@@ -1,0 +1,19 @@
+@use 'sass:math';
+$width: 7.5rem;
+
+.rating,
+.stars {
+  width: $width;
+}
+
+.mask {
+  overflow: hidden;
+}
+
+.star {
+  width: math.div($width, 5);
+
+  > path {
+    fill: var(--orange-400);
+  }
+}
