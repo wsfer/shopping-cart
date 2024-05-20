@@ -1,5 +1,7 @@
 @mixin button {
   background-color: var(--orange-300);
+  border: none;
+  cursor: pointer;
   color: var(--neutral-900);
   display: block;
   font-size: var(--text-normal);
