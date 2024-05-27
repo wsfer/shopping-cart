@@ -1,0 +1,70 @@
+@use '../../styles/components';
+
+// Layout
+.card {
+  background-color: var(--neutral-300);
+  color: var(--neutral-800);
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  height: 100%; // Fit inside <li> elements
+}
+
+.imageWrapper {
+  align-items: center;
+  background-color: var(--neutral-50);
+  display: flex;
+  justify-content: center;
+}
+
+.contentWrapper {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.controls {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.bottomContent {
+  margin-top: auto;
+}
+
+// Elements
+.image {
+  max-height: clamp(300px, 20vh, 600px);
+  max-width: 100%;
+}
+
+.title {
+  color: var(--neutral-800);
+  font-size: var(--text-normal);
+  font-weight: normal;
+}
+
+.description {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  color: var(--neutral-700);
+  display: -webkit-box;
+  font-size: var(--text-sm);
+  line-clamp: 3;
+  line-height: var(--text-normal);
+  max-height: calc(var(--text-normal) * 3);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.price {
+  color: var(--neutral-800);
+  font-size: var(--text-lg);
+}
+
+.button {
+  @include components.button;
+  flex: 1;
+  font-size: var(--text-sm);
+  min-width: max-content;
+}
