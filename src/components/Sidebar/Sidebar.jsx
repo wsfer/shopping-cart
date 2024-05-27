@@ -9,6 +9,11 @@ function Sidebar() {
       </h2>
       <ul className={styles.list}>
         <li className={styles.listItem}>
+          <NavLink className={styles.link} to="/products" end>
+            General
+          </NavLink>
+        </li>
+        <li className={styles.listItem}>
           <NavLink className={styles.link} to="/products/women-clothing">
             Women's clothing
           </NavLink>

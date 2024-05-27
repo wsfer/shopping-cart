@@ -2,11 +2,13 @@
 
 .sidebar {
   background-color: var(--neutral-800);
+  height: 100%;
+  padding: var(--text-lg);
 }
 
 .title {
   color: var(--neutral-200);
-  font-size: var(--text-lg);
+  font-size: var(--text-xl);
   font-weight: normal;
   margin: 0;
 }
