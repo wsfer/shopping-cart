@@ -1,0 +1,35 @@
+@use '../../styles/components';
+
+.quantity {
+  display: flex;
+}
+
+// Only for screen reader
+.labelText {
+  left: -9999px;
+  position: absolute;
+}
+
+.input {
+  @include components.input;
+  color: var(--neutral-800);
+  max-width: calc(var(--text-normal) * 3);
+  min-height: 100%;
+  text-align: center;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  &[type='number'] {
+    appearance: textfield;
+  }
+}
+
+.button {
+  @include components.button;
+  font-weight: bold;
+  outline-offset: 0;
+}
