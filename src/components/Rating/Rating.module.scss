@@ -1,9 +1,8 @@
 @use 'sass:math';
-$width: 7.5rem;
 
 .rating,
 .stars {
-  width: $width;
+  width: calc(var(--text-normal) * 5);
 }
 
 .mask {
@@ -11,7 +10,7 @@ $width: 7.5rem;
 }
 
 .star {
-  width: math.div($width, 5);
+  width: var(--text-normal);
 
   > path {
     fill: var(--orange-400);
