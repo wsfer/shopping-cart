@@ -22,3 +22,30 @@
     opacity: 0.5;
   }
 }
+
+@mixin icon-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: block;
+  height: var(--text-xl);
+  outline: none;
+  width: var(--text-xl);
+
+  path {
+    fill: var(--neutral-200);
+  }
+
+  &:hover path {
+    fill: var(--orange-400);
+  }
+
+  &:focus path {
+    fill: var(--orange-500);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
