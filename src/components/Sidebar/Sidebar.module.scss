@@ -1,9 +1,25 @@
 @use '../../styles/components';
 
+// Responsivity is mobile first
 .sidebar {
+  display: flex;
+}
+
+.nav {
   background-color: var(--neutral-800);
   height: 100%;
   padding: var(--text-lg);
+}
+
+.navHidden {
+  display: none;
+}
+
+.sidebarToggler {
+  @include components.icon-button;
+  background-color: var(--neutral-800);
+  height: var(--text-3xl);
+  width: var(--text-3xl);
 }
 
 .title {
@@ -28,4 +44,14 @@
   color: var(--neutral-300);
   display: block;
   min-width: max-content;
+}
+
+@media (min-width: 1000px) {
+  .navHidden {
+    display: block;
+  }
+
+  .sidebarToggler {
+    display: none;
+  }
 }
