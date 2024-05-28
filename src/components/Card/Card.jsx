@@ -9,7 +9,7 @@ function Card({ product, addToCart }) {
   const { title, price, description, image } = product;
   const rate = product.rating.rate;
 
-  const addProductToCart = () => addToCart({ ...product, quantity });
+  const handleAddToCart = () => addToCart(product, quantity);
 
   return (
     <article className={styles.card}>
@@ -23,7 +23,7 @@ function Card({ product, addToCart }) {
           <p className={styles.description}>{description}</p>
           <p className={styles.price}>$ {price.toFixed(2)}</p>
           <div className={styles.controls}>
-            <button className={styles.button} onClick={addProductToCart}>
+            <button className={styles.button} onClick={handleAddToCart}>
               Add
             </button>
             <Quantity quantity={quantity} setQuantity={setQuantity} />
