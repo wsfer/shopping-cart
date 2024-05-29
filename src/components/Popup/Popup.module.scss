@@ -1,0 +1,20 @@
+@use '../../styles/components';
+
+.dialog {
+  background-color: var(--neutral-800);
+  border: none;
+  padding: var(--text-lg);
+
+  &::backdrop {
+    background-color: var(--opaque-dark);
+  }
+}
+
+.form {
+  margin-top: 1.5rem;
+}
+
+.button {
+  @include components.button;
+  margin: 0 auto;
+}
