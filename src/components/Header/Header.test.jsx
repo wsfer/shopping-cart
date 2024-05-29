@@ -3,6 +3,14 @@ import { BrowserRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
 import Header from './Header';
 
+vi.mock('../../hooks/useCart', () => {
+  return {
+    default: () => {
+      return { cart: [{}, {}, {}] };
+    },
+  };
+});
+
 const routerWrapper = ({ children }) => (
   <BrowserRouter>{children}</BrowserRouter>
 );
@@ -22,9 +30,9 @@ test('Navbar should have links to home, products and cart', async () => {
   const user = userEvent.setup();
 
   render(<Header />, { wrapper: routerWrapper });
-  const homeLink = screen.getByRole('link', { name: /home/i });
-  const productsLink = screen.getByRole('link', { name: /products/i });
-  const cartLink = screen.getByRole('link', { name: /cart/i });
+  const homeLink = screen.getByRole('link', { name: 'Home' });
+  const productsLink = screen.getByRole('link', { name: 'Products' });
+  const cartLink = screen.getByRole('link', { name: 'Cart (3 products)' });
 
   await user.click(homeLink);
   expect(window.location.pathname).toBe('/');
