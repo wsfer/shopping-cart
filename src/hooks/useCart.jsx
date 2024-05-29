@@ -11,7 +11,7 @@ function useCart() {
 
   const addProduct = (product) => {
     const { id, quantity } = product;
-    const newCart = cart.slice();
+    const newCart = cart.slice().filter((item) => item.id !== id);
 
     if (id && Number.isInteger(quantity) && quantity > 0) {
       newCart.push(product);
