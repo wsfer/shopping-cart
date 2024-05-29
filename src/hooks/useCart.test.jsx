@@ -125,6 +125,24 @@ describe('On addProduct method', () => {
       expect(getStoredCart()).toEqual(fakeCart);
     });
   });
+
+  describe('when product alteady exists in the cart', () => {
+    test('should update product quantity', () => {
+      const { result, getStoredCart } = setup(fakeCart);
+      const expectedCart = [
+        { id: 78, quantity: 3 },
+        { id: 8, quantity: 20 },
+        { id: 3, quantity: 5 },
+      ];
+
+      act(() => {
+        result.current.addProduct({ id: 3, quantity: 5 });
+      });
+
+      expect(getStoredCart()).toEqual(expectedCart);
+      expect(result.current.cart).toEqual(expectedCart);
+    });
+  });
 });
 
 describe('On updateQuantity method', () => {
