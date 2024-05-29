@@ -17,7 +17,7 @@ const setup = (cartItems) => {
 
   return {
     result,
-    getCart: () => JSON.parse(localStorage.getItem('cart')),
+    getStoredCart: () => JSON.parse(localStorage.getItem('cart')),
   };
 };
 
@@ -28,51 +28,35 @@ beforeEach(() => {
 
 describe('On initialization', () => {
   describe('when cart is not created on localStorage', () => {
-    test('cart should be an empty array', () => {
-      const { result } = setup();
+    test('cart should be created as an empty array', () => {
+      const { result, getStoredCart } = setup();
       expect(result.current.cart).toEqual([]);
-    });
-
-    test('stored cart should be updated as empty array', () => {
-      const { getCart } = setup();
-      expect(getCart()).toEqual([]);
+      expect(getStoredCart()).toEqual([]);
     });
   });
 
   describe('when cart is empty on localStorage', () => {
     test('cart should be an empty array', () => {
-      const { result } = setup([]);
+      const { result, getStoredCart } = setup([]);
       expect(result.current.cart).toEqual([]);
-    });
-
-    test('stored cart should still be an empty array', () => {
-      const { getCart } = setup();
-      expect(getCart()).toEqual([]);
+      expect(getStoredCart()).toEqual([]);
     });
   });
 
   describe('when stored cart is not an array', () => {
     describe('but a string', () => {
       test('cart should be an empty array', () => {
-        const { result } = setup('lorem ipsum dolor');
+        const { result, getStoredCart } = setup('lorem ipsum dolor');
         expect(result.current.cart).toEqual([]);
-      });
-
-      test('stored cart should be updated to an empty array', () => {
-        const { getCart } = setup('sit amet');
-        expect(getCart()).toEqual([]);
+        expect(getStoredCart()).toEqual([]);
       });
     });
 
     describe('but an object', () => {
       test('cart should be an empty array', () => {
-        const { result } = setup({ cats: 'meow' });
+        const { result, getStoredCart } = setup({ cats: 'meow' });
         expect(result.current.cart).toEqual([]);
-      });
-
-      test('stored cart should be updated to an empty array', () => {
-        const { getCart } = setup({ bana: 'na' });
-        expect(getCart()).toEqual([]);
+        expect(getStoredCart()).toEqual([]);
       });
     });
   });
@@ -80,13 +64,9 @@ describe('On initialization', () => {
   describe('when stored cart is not empty', () => {
     describe('and all items have id and quantity', () => {
       test('cart should be the stored cart', () => {
-        const { result } = setup(fakeCart);
+        const { result, getStoredCart } = setup(fakeCart);
         expect(result.current.cart).toEqual(fakeCart);
-      });
-
-      test('stored cart should not be changed', () => {
-        const { getCart } = setup(fakeCart);
-        expect(getCart()).toEqual(fakeCart);
+        expect(getStoredCart()).toEqual(fakeCart);
       });
     });
 
@@ -98,14 +78,10 @@ describe('On initialization', () => {
         { id: 777, quantity: 5.67 },
       ];
 
-      test('cart should have the valid items', () => {
-        const { result } = setup(invalidCart);
+      test('cart and stored cart should only have the valid items', () => {
+        const { result, getStoredCart } = setup(invalidCart);
         expect(result.current.cart).toEqual(fakeCart);
-      });
-
-      test('stored cart should be updated to remove invalid items', () => {
-        const { getCart } = setup(invalidCart);
-        expect(getCart()).toEqual(fakeCart);
+        expect(getStoredCart()).toEqual(fakeCart);
       });
     });
   });
@@ -113,33 +89,22 @@ describe('On initialization', () => {
 
 describe('On addProduct method', () => {
   describe('when product has valid id and quantity', () => {
-    test('should update cart', () => {
-      const { result } = setup(fakeCart);
+    test('should update cart and stored cart', () => {
+      const { result, getStoredCart } = setup(fakeCart);
+      const expectedCart = [...fakeCart, { id: 777, quantity: 7 }];
 
       act(() => {
         result.current.addProduct({ id: 777, quantity: 7 });
       });
 
-      expect(result.current.cart).toEqual([
-        ...fakeCart,
-        { id: 777, quantity: 7 },
-      ]);
-    });
-
-    test('should update stored cart', () => {
-      const { result, getCart } = setup(fakeCart);
-
-      act(() => {
-        result.current.addProduct({ id: 777, quantity: 7 });
-      });
-
-      expect(getCart()).toEqual([...fakeCart, { id: 777, quantity: 7 }]);
+      expect(result.current.cart).toEqual(expectedCart);
+      expect(getStoredCart()).toEqual(expectedCart);
     });
   });
 
   describe('when product is invalid', () => {
     test('should throw an error', () => {
-      const { result } = setup(fakeCart);
+      const { result, getStoredCart } = setup(fakeCart);
 
       expect(() => {
         result.current.addProduct({});
@@ -156,6 +121,8 @@ describe('On addProduct method', () => {
       expect(() => {
         result.current.addProduct({ quantity: 7 });
       }).toThrow(new Error('Invalid product'));
+
+      expect(getStoredCart()).toEqual(fakeCart);
     });
   });
 });
@@ -164,37 +131,25 @@ describe('On updateQuantity method', () => {
   describe('when product to update is found', () => {
     describe('and quantity is valid', () => {
       test('should update cart', () => {
-        const { result } = setup(fakeCart);
+        const { result, getStoredCart } = setup(fakeCart);
+        const expectedCart = [
+          { id: 3, quantity: 1 },
+          { id: 78, quantity: 3 },
+          { id: 8, quantity: 10 },
+        ];
 
         act(() => {
           result.current.updateQuantity(8, 10);
         });
 
-        expect(result.current.cart).toEqual([
-          { id: 3, quantity: 1 },
-          { id: 78, quantity: 3 },
-          { id: 8, quantity: 10 },
-        ]);
-      });
-
-      test('should update stored cart', () => {
-        const { result, getCart } = setup(fakeCart);
-
-        act(() => {
-          result.current.updateQuantity(78, 5);
-        });
-
-        expect(getCart()).toEqual([
-          { id: 3, quantity: 1 },
-          { id: 78, quantity: 5 },
-          { id: 8, quantity: 20 },
-        ]);
+        expect(result.current.cart).toEqual(expectedCart);
+        expect(getStoredCart()).toEqual(expectedCart);
       });
     });
 
     describe('and quantity is invalid', () => {
       test('should throw an error', () => {
-        const { result } = setup(fakeCart);
+        const { result, getStoredCart } = setup(fakeCart);
 
         expect(() => {
           result.current.updateQuantity(3, 0);
@@ -219,13 +174,15 @@ describe('On updateQuantity method', () => {
         expect(() => {
           result.current.updateQuantity(3, [1, 2, 3]);
         }).toThrow(new Error('Invalid quantity'));
+
+        expect(getStoredCart()).toEqual(fakeCart);
       });
     });
   });
 
   describe("when product to update isn't found", () => {
     test('should throw an error', () => {
-      const { result } = setup(fakeCart);
+      const { result, getStoredCart } = setup(fakeCart);
 
       expect(() => {
         result.current.updateQuantity(1, 2);
@@ -246,6 +203,8 @@ describe('On updateQuantity method', () => {
       expect(() => {
         result.current.updateQuantity(675689, 5);
       }).toThrow(new Error('Product not found'));
+
+      expect(getStoredCart()).toEqual(fakeCart);
     });
   });
 });
@@ -253,35 +212,24 @@ describe('On updateQuantity method', () => {
 describe('On removeProduct method', () => {
   describe('when product to remove is found', () => {
     test('should update cart', () => {
-      const { result } = setup(fakeCart);
+      const { result, getStoredCart } = setup(fakeCart);
+      const expectedCart = [
+        { id: 3, quantity: 1 },
+        { id: 8, quantity: 20 },
+      ];
 
       act(() => {
         result.current.removeProduct(78);
       });
 
-      expect(result.current.cart).toEqual([
-        { id: 3, quantity: 1 },
-        { id: 8, quantity: 20 },
-      ]);
-    });
-
-    test('should update stored cart', () => {
-      const { result, getCart } = setup(fakeCart);
-
-      act(() => {
-        result.current.removeProduct(78);
-      });
-
-      expect(getCart()).toEqual([
-        { id: 3, quantity: 1 },
-        { id: 8, quantity: 20 },
-      ]);
+      expect(result.current.cart).toEqual(expectedCart);
+      expect(getStoredCart()).toEqual(expectedCart);
     });
   });
 
   describe("when product to update isn't found", () => {
     test('should throw an error', () => {
-      const { result } = setup(fakeCart);
+      const { result, getStoredCart } = setup(fakeCart);
 
       expect(() => {
         result.current.removeProduct(1);
@@ -302,48 +250,56 @@ describe('On removeProduct method', () => {
       expect(() => {
         result.current.removeProduct(675689);
       }).toThrow(new Error('Product not found'));
+
+      expect(getStoredCart()).toEqual(fakeCart);
     });
   });
 });
 
 describe('Should mirror the actions from another similar hook', () => {
   test('When a new product is added', () => {
-    const { result } = setup(fakeCart);
+    const { result, getStoredCart } = setup(fakeCart);
     const anotherHook = renderHook(useCart);
+    const expectedCart = [...fakeCart, { id: 56, quantity: 3 }];
 
     act(() => {
       anotherHook.result.current.addProduct({ id: 56, quantity: 3 });
     });
 
-    expect(result.current.cart).toEqual([...fakeCart, { id: 56, quantity: 3 }]);
+    expect(result.current.cart).toEqual(expectedCart);
+    expect(getStoredCart()).toEqual(expectedCart);
   });
 
   test('When a product is updated', () => {
-    const { result } = setup(fakeCart);
+    const { result, getStoredCart } = setup(fakeCart);
     const anotherHook = renderHook(useCart);
+    const expectedCart = [
+      { id: 3, quantity: 1 },
+      { id: 78, quantity: 3 },
+      { id: 8, quantity: 777 },
+    ];
 
     act(() => {
       anotherHook.result.current.updateQuantity(8, 777);
     });
 
-    expect(result.current.cart).toEqual([
-      { id: 3, quantity: 1 },
-      { id: 78, quantity: 3 },
-      { id: 8, quantity: 777 },
-    ]);
+    expect(result.current.cart).toEqual(expectedCart);
+    expect(getStoredCart()).toEqual(expectedCart);
   });
 
   test('When a product is removed', () => {
-    const { result } = setup(fakeCart);
+    const { result, getStoredCart } = setup(fakeCart);
     const anotherHook = renderHook(useCart);
+    const expectedCart = [
+      { id: 3, quantity: 1 },
+      { id: 8, quantity: 20 },
+    ];
 
     act(() => {
       anotherHook.result.current.removeProduct(78);
     });
 
-    expect(result.current.cart).toEqual([
-      { id: 3, quantity: 1 },
-      { id: 8, quantity: 20 },
-    ]);
+    expect(result.current.cart).toEqual(expectedCart);
+    expect(getStoredCart()).toEqual(expectedCart);
   });
 });
