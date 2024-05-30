@@ -57,3 +57,12 @@ body {
     sans-serif;
   margin: 0;
 }
+
+#root {
+  display: grid;
+
+  // This makes <main> pages occupy all remaining space when content < 100vh
+  // Header + <main> + Footer
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
