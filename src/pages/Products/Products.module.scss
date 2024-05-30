@@ -1,0 +1,25 @@
+.main {
+  background-color: var(--neutral-400);
+}
+
+.content {
+  display: flex;
+}
+
+.productsWrapper {
+  margin: 0 auto;
+  padding: var(--text-lg);
+  width: 80%;
+}
+
+.popupText {
+  color: var(--neutral-200);
+  font-size: var(--text-normal);
+  margin: 0;
+  max-width: 50ch;
+  text-align: center;
+}
+
+.accent {
+  color: var(--orange-300);
+}
