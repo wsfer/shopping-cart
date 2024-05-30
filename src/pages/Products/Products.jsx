@@ -41,19 +41,21 @@ function Products() {
   return (
     <main className={styles.main}>
       <Loading loading={loading} message={error}>
-        <Banner title={title} image={image} />
-        <div className={styles.content}>
-          <Sidebar />
-          <div className={styles.productsWrapper}>
-            <CardList size="clamp(300px, 20vw, 600px)">
-              {products.map((product) => (
-                <Card
-                  key={product.id}
-                  product={product}
-                  addToCart={handleAddToCart}
-                />
-              ))}
-            </CardList>
+        <div className={styles.pageContent}>
+          <Banner title={title} image={image} />
+          <div className={styles.productsContent}>
+            <Sidebar />
+            <div className={styles.productsWrapper}>
+              <CardList size="clamp(300px, 20vw, 600px)">
+                {products.map((product) => (
+                  <Card
+                    key={product.id}
+                    product={product}
+                    addToCart={handleAddToCart}
+                  />
+                ))}
+              </CardList>
+            </div>
           </div>
           <Popup ref={popupRef}>
             <p className={styles.popupText}>

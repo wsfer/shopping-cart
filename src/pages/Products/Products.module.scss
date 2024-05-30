@@ -2,8 +2,15 @@
   background-color: var(--neutral-400);
 }
 
-.content {
+.pageContent {
   display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.productsContent {
+  display: flex;
+  flex: 1;
 }
 
 .productsWrapper {
