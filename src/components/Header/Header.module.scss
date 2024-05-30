@@ -35,3 +35,32 @@
   @include components.link;
   color: var(--neutral-200);
 }
+
+.cartLinkWrapper {
+  position: relative;
+}
+
+.cartQuantity {
+  background-color: var(--orange-300);
+  border-radius: 50%;
+  color: var(--neutral-800);
+
+  // Size
+  font-size: var(--text-sm);
+  height: var(--text-normal);
+  width: var(--text-normal);
+
+  // Position
+  position: absolute;
+  transform: translateY(-25%);
+
+  // Center text
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+}
+
+.srCartQuantity {
+  position: absolute;
+  left: -9999px;
+}
