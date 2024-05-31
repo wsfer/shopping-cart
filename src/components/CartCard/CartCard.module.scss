@@ -1,0 +1,59 @@
+@use '../../styles/components';
+
+// Layout
+.card {
+  background-color: var(--neutral-300);
+  color: var(--neutral-800);
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  height: 100%; // fit inside <li> element
+}
+
+.imageWrapper {
+  align-items: center;
+  background-color: var(--neutral-50);
+  display: flex;
+  justify-content: center;
+}
+
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.controls {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+}
+
+// Elements
+.image {
+  max-height: clamp(200px, 20vh, 400px);
+  max-width: 100%;
+}
+
+.title {
+  color: var(--neutral-800);
+  font-size: var(--text-normal);
+  font-weight: normal;
+  margin: 0;
+}
+
+.price {
+  color: var(--neutral-800);
+  font-size: var(--text-lg);
+}
+
+.deleteButton {
+  @include components.icon-button;
+  height: var(--text-3xl);
+  margin-left: auto;
+  width: var(--text-3xl);
+
+  path {
+    fill: var(--neutral-800);
+  }
+}
