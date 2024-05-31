@@ -4,6 +4,7 @@
   background-color: var(--neutral-800);
   border: none;
   padding: var(--text-lg);
+  position: relative;
 
   &::backdrop {
     background-color: var(--opaque-dark);
@@ -11,10 +12,31 @@
 }
 
 .form {
-  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
 }
 
-.button {
+.closeButton {
+  @include components.icon-button;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.acceptButton {
   @include components.button;
-  margin: 0 auto;
+  margin-top: 1rem;
+}
+
+.refuseButton {
+  @include components.button;
+  background-color: transparent;
+  border: 0.15em solid var(--neutral-200);
+  color: var(--neutral-200);
+  margin-top: 1rem;
+
+  &:hover {
+    color: var(--neutral-800);
+  }
 }

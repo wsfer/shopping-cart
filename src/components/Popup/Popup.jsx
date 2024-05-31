@@ -1,12 +1,33 @@
 import { forwardRef } from 'react';
 import styles from './Popup.module.scss';
 
-const Popup = forwardRef(function Popup({ children }, ref) {
+const Popup = forwardRef(function Popup(
+  { children, onAccept, onRefuse, onClose },
+  ref
+) {
   return (
     <dialog ref={ref} className={styles.dialog}>
       {children}
       <form method="dialog" className={styles.form}>
-        <button className={styles.button}>Close</button>
+        <button
+          className={styles.closeButton}
+          onClick={onClose}
+          aria-label="Close"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
+          </svg>
+        </button>
+        {onAccept && (
+          <button className={styles.acceptButton} onClick={onAccept}>
+            Confirm
+          </button>
+        )}
+        {onRefuse && (
+          <button className={styles.refuseButton} onClick={onRefuse}>
+            Cancel
+          </button>
+        )}
       </form>
     </dialog>
   );
