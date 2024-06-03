@@ -1,0 +1,50 @@
+@use '../../styles/components';
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  min-width: max-content;
+  width: 100%;
+}
+
+.title {
+  color: var(--neutral-900);
+  font-size: var(--text-lg);
+  margin-top: 0;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.listItem {
+  color: var(--neutral-800);
+  display: flex;
+  font-size: var(--text-normal);
+  justify-content: space-between;
+  margin-bottom: 0.5em;
+}
+
+.accent {
+  color: var(--neutral-900);
+  display: inline-block;
+  margin-left: auto;
+}
+
+.paragraph {
+  color: var(--neutral-800);
+  font-size: var(--text-normal);
+  text-align: center;
+}
+
+.button {
+  @include components.button;
+  margin-top: 0.5em;
+  text-align: center;
+}
+
+.linkButton {
+  margin: 0 auto;
+}
