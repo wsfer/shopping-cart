@@ -1,7 +1,5 @@
 # Shopping Cart
 
--- TODO: Put live preview link --
-
 ## About
 
 This is a mock shopping cart built with [Fake Store API](https://fakestoreapi.com/) as part of [The Odin Project](https://www.theodinproject.com/) curriculum.
@@ -23,13 +21,29 @@ This is a mock shopping cart built with [Fake Store API](https://fakestoreapi.co
     <li>Responsivity</li>
 </ul>
 
-###
+## How to run
+
+### Live preview
+
+https://shopping-cart-37caf851.netlify.app/
+
+### Running locally
+
+Clone the repository on your local machine then run the commands:
+
+```
+npm install
+npm run dev
+```
+
+Finally access from <strong>localhost:5173</strong> on browser.
 
 ## What I learned
 
 <ul>
     <li>Routing on react</li>
     <li>Unit testing react components</li>
+    <li>CSS Modules</li>
     <li>Improved my accessibility knowledge</li>
     <li>Improved my responsivity knowledge</li>
 </ul>
