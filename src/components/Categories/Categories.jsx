@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
-import Container from '../../components/Container/Container';
+import Container from '../Container/Container';
 import styles from './Categories.module.scss';
 
+// Display styled links to product categories
 function Categories() {
   return (
     <section className={styles.categories}>

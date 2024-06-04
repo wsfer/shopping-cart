@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import Container from '../../components/Container/Container';
-import Logo from '../../components/Logo/Logo';
+import Container from '../Container/Container';
+import Logo from '../Logo/Logo';
 import earrings from '../../assets/images/earrings.jpg';
 import styles from './Hero.module.scss';
 

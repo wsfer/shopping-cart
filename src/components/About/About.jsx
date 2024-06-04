@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import Container from '../../components/Container/Container';
+import Container from '../Container/Container';
 import blackCoatMan from '../../assets/images/man-in-black-coat.jpg';
 import styles from './About.module.scss';
 
